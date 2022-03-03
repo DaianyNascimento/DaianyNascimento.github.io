@@ -1,0 +1,87 @@
+.splash-screen,
+#gameover-screen,
+#game-screen,
+#gameover-screen-2 {
+  float: center;
+  padding: 0% 3%;
+  width: 1000px;
+  height: 560px;
+  border: 2px solid #0476f2;
+  background-image: url(../images/dc-comics-background.jpg);
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.splash-screen p {
+  font-size: 18px;
+}
+
+#start-button,
+#restart-button,
+#sound-button-splash-screen,
+#sound-button-game-screen,
+#sound-button-gameover-screen,
+#sound-button-gameover-screen-2,
+#restart-button-2 {
+  font-size: 20px;
+  font-family: "Ubuntu";
+  background-color: #0476f2;
+  color: #fff;
+  padding: 10px 20px;
+  border: 0;
+  box-shadow: 0;
+  border-radius: 5px;
+}
+
+#sound-button-splash-screen,
+#sound-button-game-screen,
+#sound-button-gameover-screen,
+#sound-button-gameover-screen-2 {
+  position: absolute;
+  top: 1em;
+  left: 47.5em;
+}
+
+#start-button,
+#restart-button,
+#restart-button-2 {
+  position: absolute;
+  left: 24.2em;
+  top: 26em;
+}
+
+#title {
+  padding-top: 95px;
+  font-size: 70px;
+  color: #0476f2;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px white;
+}
+
+#title-instructions {
+  padding-top: 30px;
+  font-size: 40px;
+  color: #0476f2;
+  margin: 10px;
+  text-shadow: 2px 2px white;
+  padding: 0;
+}
+
+#instructions {
+  color: white;
+  font-weight: 800;
+  font-size: 20px;
+  margin: 10px;
+  text-shadow: 2px 2px black;
+}
+
+.wrap {
+  display: block;
+}
+
+body {
+  padding: 0;
+  text-align: center;
+  font-family: "Ubuntu";
+}
