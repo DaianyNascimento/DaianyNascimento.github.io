@@ -19,27 +19,22 @@ let gameoverBgSound = new Audio("../sounds/gameover-sound.mp3");
 gameoverBgSound.volume = 0.1;
 let congratulationsBgSound = new Audio("../sounds/success.mp3");
 congratulationsBgSound.volume = 0.1;
-/*let flipCardSound = new Audio("../sounds/flipcard-sound.mp3");
-flipCardSound = 0.2;*/
 
 // other variables
 let clickedCards = [];
-let w, h, cards, backCard, batman, superman, joker;
+let w, h, cards, backCard, batman, superman, joker, deadpool, magneto, wolverine;
 let tries = 0;
-let gameCards = [];
-let heros = [];
+let x1, x2, x3, x4, y1, y2, y3, posX, posY;
 
 function preload() {
-    backCard = loadImage('../images/DC_Comics_logo.png')
+    backCard = loadImage('../images/dc-comics-backcard.png')
     bgImg = loadImage('../images/dc-comics-background.jpg');
     batman = loadImage('../images/hero0.png');
-    superman = loadImage('../images/hero5.png');
     joker = loadImage('../images/hero1.png');
-
-
-    for (let i = 0; i < 5; i++) {
-        heros[i] = loadImage('../images/hero' + i + '.png');
-    }
+    wolverine = loadImage('../images/hero2.png');
+    magneto = loadImage('../images/hero3.png');
+    deadpool = loadImage('../images/hero4.png');
+    superman = loadImage('../images/hero5.png');
 }
 
 function setup() {
@@ -49,35 +44,87 @@ function setup() {
 
     w = (width - 50) / 4;
     h = 365 / 3;
+    x1 = 10;
+    x2 = 142.5;
+    x3 = 275;
+    x4 = 407.5;
+    y1 = 10;
+    y2 = 141.69;
+    y3 = 273.37;
+    posX = 0;
+    posY = 0;
 
-    cards = shuffle([10, 10, 20, 20, 30, 30]);
-    //let hero = random(heros);
-
-    for (let x = 10; x < width; x += w + 10) {
-        for (let y = 10; y < 405; y += h + 10) {
-            gameCards.push(new GameCards(x, y, backCard));
-        }
-    }
+    cards = shuffle([10, 10, 20, 20, 30, 30, 40, 40, 50, 50, 60, 60]);
 }
 
 function draw() {
     background('#FFFFFF');
 
     for (let i = 0; i < cards.length; i++) {
-        image(backCard, 90 + (i * 70), 100, 55, 80);
+        if (i == 0) {
+            posX = x1;
+            posY = y1;
+        } else if (i == 1) {
+            posX = x1;
+            posY = y2;
+        } else if (i == 2) {
+            posX = x1;
+            posY = y3;
+        } else if (i == 3) {
+            posX = x2;
+            posY = y1;
+        } else if (i == 4) {
+            posX = x2;
+            posY = y2;
+        } else if (i == 5) {
+            posX = x2;
+            posY = y3;
+        } else if (i == 6) {
+            posX = x3;
+            posY = y1;
+        } else if (i == 7) {
+            posX = x3;
+            posY = y2;
+        } else if (i == 8) {
+            posX = x3;
+            posY = y3;
+        } else if (i == 9) {
+            posX = x4;
+            posY = y1;
+        } else if (i == 10) {
+            posX = x4;
+            posY = y2;
+        } else if (i == 11) {
+            posX = x4;
+            posY = y3;
+        }
+
+        image(backCard, posX, posY, w, h);
 
         if (clickedCards[0] == i || clickedCards[1] == i) {
 
             if (cards[i] == 10) {
-                image(batman, 91 + (i * 70), 101, 53, 78);
+                image(batman, posX, posY, w, h);
             }
 
             if (cards[i] == 20) {
-                image(superman, 91 + (i * 70), 101, 53, 78);
+                image(superman, posX, posY, w, h);
             }
 
             if (cards[i] == 30) {
-                image(joker, 91 + (i * 70), 101, 53, 78);
+                image(joker, posX, posY, w, h);
+            }
+
+            if (cards[i] == 40) {
+                image(wolverine, posX, posY, w, h);
+            }
+
+            if (cards[i] == 50) {
+                image(magneto, posX, posY, w, h);
+            }
+
+            if (cards[i] == 60) {
+                image(deadpool, posX, posY, w, h);
             }
         }
     }
@@ -86,35 +133,31 @@ function draw() {
     fill(0);
     textSize(15);
     text('Tries: ' + tries, 20, height - 50, 200, 100);
-    text('You only have 10 tries before gameover.', 100, height - 50, 300, 100);
+    text('You only have 15 tries before gameover.', 100, height - 50, 300, 100);
 
     if (cards.length == 0) {
         gameScreen.style.display = "none";
         gameOverScreen.style.display = "";
         tries = 0;
-        cards = shuffle([10, 10, 20, 20, 30, 30]);
-        clickedCards = []
+        cards = shuffle([10, 10, 20, 20, 30, 30, 40, 40, 50, 50, 60, 60]);
+        clickedCards = [];
 
-        if (soundBtnGameScreen.textContent == "Sound of") {
-            soundBtnGameOverScreen.innerText = "Sound of";
+        if (soundBtnGameScreen.textContent == "Sound off") {
+            soundBtnGameOverScreen.innerText = "Sound off";
             congratulationsBgSound.play();
         }
     }
 
-    if (tries > 10) {
+    if (tries > 15) {
         gameScreen.style.display = "none";
         gameOverScreen2.style.display = "";
         tries = 0;
-        cards = shuffle([10, 10, 20, 20, 30, 30]);
+        cards = shuffle([10, 10, 20, 20, 30, 30, 40, 40, 50, 50, 60, 60]);
         clickedCards = [];
 
-        if (soundBtnGameScreen.textContent == "Sound of") {
+        if (soundBtnGameScreen.textContent == "Sound off") {
             gameoverBgSound.play();
         }
-    }
-
-    for (let i = 0; i < gameCards.length; i++) {
-        //gameCards[i].draw();
     }
 }
 
@@ -135,13 +178,49 @@ function mousePressed() {
     } else {
         for (let i = 0; i < cards.length; i++) {
 
-            let pos = 90 + i * 70;
+            if (i == 0) {
+                posX = x1;
+                posY = y1;
+            } else if (i == 1) {
+                posX = x1;
+                posY = y2;
+            } else if (i == 2) {
+                posX = x1;
+                posY = y3;
+            } else if (i == 3) {
+                posX = x2;
+                posY = y1;
+            } else if (i == 4) {
+                posX = x2;
+                posY = y2;
+            } else if (i == 5) {
+                posX = x2;
+                posY = y3;
+            } else if (i == 6) {
+                posX = x3;
+                posY = y1;
+            } else if (i == 7) {
+                posX = x3;
+                posY = y2;
+            } else if (i == 8) {
+                posX = x3;
+                posY = y3;
+            } else if (i == 9) {
+                posX = x4;
+                posY = y1;
+            } else if (i == 10) {
+                posX = x4;
+                posY = y2;
+            } else if (i == 11) {
+                posX = x4;
+                posY = y3;
+            }
 
-            if (mouseX >= pos && mouseX <= pos + 55 && mouseY >= 100 && mouseY <= 180) {
-
+            if (mouseX >= posX && mouseX < posX + w && mouseY >= posY && mouseY < posY + h) {
                 if (i != clickedCards[0]) {
                     clickedCards.push(i);
-                    tries += 1;
+
+                    if (clickedCards.length == 2) tries += 1;
                 }
             }
         }
@@ -154,17 +233,6 @@ function startGame() {
     gameOverScreen.style.display = "none";
     gameOverScreen2.style.display = "none";
 }
-class GameCards {
-    constructor(x, y, img) {
-        this.x = x;
-        this.y = y;
-        this.img = img;
-    }
-
-    draw() {
-        image(this.img, this.x, this.y, w, h);
-    }
-}
 
 window.onload = () => {
     gameScreen.style.display = "none";
@@ -172,7 +240,7 @@ window.onload = () => {
     gameOverScreen2.style.display = "none";
 
     document.getElementById('start-button').onclick = () => {
-        if (soundBtnSplashScreen.textContent == "Sound of") {
+        if (soundBtnSplashScreen.textContent == "Sound off") {
             initialBgSound.pause();
             gameBgSound.play();
         }
@@ -181,7 +249,7 @@ window.onload = () => {
 
     document.getElementById('restart-button').onclick = () => {
 
-        if (soundBtnGameScreen.textContent == "Sound of") {
+        if (soundBtnGameScreen.textContent == "Sound off") {
             gameBgSound.play();
         } else {
             gameBgSound.pause();
@@ -198,10 +266,10 @@ window.onload = () => {
 
         if (soundBtnSplashScreen.textContent == "Sound on") {
             initialBgSound.play();
-            soundBtnSplashScreen.innerText = "Sound of";
-            soundBtnGameScreen.innerText = "Sound of";
-            soundBtnGameOverScreen.innerText = "Sound of";
-            soundBtnGameOverScreen2.innerText = "Sound of";
+            soundBtnSplashScreen.innerText = "Sound off";
+            soundBtnGameScreen.innerText = "Sound off";
+            soundBtnGameOverScreen.innerText = "Sound off";
+            soundBtnGameOverScreen2.innerText = "Sound off";
         } else {
             initialBgSound.pause();
             soundBtnSplashScreen.innerText = "Sound on";
@@ -214,10 +282,10 @@ window.onload = () => {
     document.getElementById('sound-button-game-screen').onclick = () => {
         if (soundBtnGameScreen.textContent == "Sound on") {
             gameBgSound.play();
-            soundBtnGameScreen.innerText = "Sound of";
-            soundBtnSplashScreen.innerText = "Sound of";
-            soundBtnGameOverScreen.innerText = "Sound of";
-            soundBtnGameOverScreen2.innerText = "Sound of";
+            soundBtnGameScreen.innerText = "Sound off";
+            soundBtnSplashScreen.innerText = "Sound off";
+            soundBtnGameOverScreen.innerText = "Sound off";
+            soundBtnGameOverScreen2.innerText = "Sound off";
         } else {
             gameBgSound.pause();
             soundBtnGameScreen.innerText = "Sound on";
@@ -230,10 +298,10 @@ window.onload = () => {
     document.getElementById('sound-button-gameover-screen').onclick = () => {
         if (soundBtnGameOverScreen.textContent == "Sound on") {
             gameBgSound.play();
-            soundBtnGameOverScreen.innerText = "Sound of";
-            soundBtnGameScreen.innerText = "Sound of";
-            soundBtnSplashScreen.innerText = "Sound of";
-            soundBtnGameOverScreen2.innerText = "Sound of";
+            soundBtnGameOverScreen.innerText = "Sound off";
+            soundBtnGameScreen.innerText = "Sound off";
+            soundBtnSplashScreen.innerText = "Sound off";
+            soundBtnGameOverScreen2.innerText = "Sound off";
         } else {
             initialBgSound.pause();
             gameBgSound.pause();
@@ -247,10 +315,10 @@ window.onload = () => {
     document.getElementById('sound-button-gameover-screen-2').onclick = () => {
         if (soundBtnGameOverScreen2.textContent == "Sound on") {
             gameBgSound.play();
-            soundBtnGameOverScreen2.innerText = "Sound of";
-            soundBtnGameScreen.innerText = "Sound of";
-            soundBtnSplashScreen.innerText = "Sound of";
-            soundBtnGameOverScreen2.innerText = "Sound of";
+            soundBtnGameOverScreen2.innerText = "Sound off";
+            soundBtnGameScreen.innerText = "Sound off";
+            soundBtnSplashScreen.innerText = "Sound off";
+            soundBtnGameOverScreen2.innerText = "Sound off";
         } else {
             initialBgSound.pause();
             gameBgSound.pause();

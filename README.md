@@ -7,14 +7,13 @@ This is a simple matching game where the player has to find the images that matc
 
 
 ## MVP (DOM - CANVAS)
-- the game has a 4x4 square format.
+- the game has a 3x4 square format.
 - all squares are clickable.
 - each clicked square reveals an image.
 - when two different images are revealed, they're hidden again.
-- when two identical images are revealed, a match is found and they remain displayed on the screen.
+- when two identical images are revealed, a match is found and they're hide on the screen.
 - to win the game, all matches must be found.
-- the game displays the amount of moves made.
-- the game displays a timer.
+- the game displays the amount of tries made.
 
 
 ## Backlog
@@ -23,28 +22,45 @@ This is a simple matching game where the player has to find the images that matc
 
 
 ## Data structure
-Classes and methods definition. Or functions.
+# index.js
+
+- preload() {}
+- setup() {}
+- draw() {}
+- mousePressed() {}
+- startGame() {}
+- window.onload = () => {}
 
 
 ## States y States Transitions
 Definition of the different states and their transition (transition functions)
 
-- splashScreen
-- gameScreen
-- gameoverScreen
+- splash Screen
+- game Screen
+- gameover Screen
+- gamewin Screen
 
 
 ## Task
-Task definition in order of priority
 
+- main - build Dom
+- main - build Splash Screen
+- main - add Event Listener
+- main - build Game Screen
+- main - build Game Over Screen
+- main - build Game WinScreen
+- game - start Game
+- game - create Canvas
+- game - draw
+- game - mouse Pressed
 
-## Additional Links
+## Links
 
 
 ### Git
 URls for the project repo and deploy
 [Link Repo](https://github.com/DaianyNascimento/dc-matching-game/)
-[Link Deploy](http://github.com)
+[Link Deploy](https://daianynascimento.github.io/)
 
 ### Slides
-[Link Slides.com](http://slides.com)
+[Link Slides.com](https://docs.google.com/presentation/d/189fqUZfc3ejZwqL1AtMF_SUm-TulDbE3Z64U3uUIg1A/edit?usp=sharing)
