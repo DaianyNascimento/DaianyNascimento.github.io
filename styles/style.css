@@ -1,7 +1,7 @@
 .splash-screen,
-#gameover-screen,
+#gamewin-screen,
 #game-screen,
-#gameover-screen-2 {
+#gameover-screen {
   float: center;
   padding: 0% 3%;
   width: 1000px;
@@ -21,8 +21,8 @@
 #restart-button,
 #sound-button-splash-screen,
 #sound-button-game-screen,
+#sound-button-gamewin-screen,
 #sound-button-gameover-screen,
-#sound-button-gameover-screen-2,
 #restart-button-2 {
   font-size: 20px;
   font-family: "Ubuntu";
@@ -36,8 +36,8 @@
 
 #sound-button-splash-screen,
 #sound-button-game-screen,
-#sound-button-gameover-screen,
-#sound-button-gameover-screen-2 {
+#sound-button-gamewin-screen,
+#sound-button-gameover-screen {
   position: absolute;
   top: 1em;
   left: 47.5em;
